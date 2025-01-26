@@ -44,10 +44,11 @@ def xmas_diag(file, i, j):
             
     return c
 
-# Part 1 
+
 if __name__ == '__main__':
+
+    # Part 1 
     file = open("Day 4/input.txt").readlines()
-    # file = ["MMMSXXMASM", "MSAMXMSMSA", "AMXSXMAAMM", "MSAMASMSMX", "XMASAMXAMM", "XXAMMXXAMA", "SMSMSASXSS", "SAXAMASAAA", "MAMMMXMMMM", "MXMXAXMASX"]
     count = 0
     for i in range(len(file)): 
         for j in range(len(file[i])):
@@ -59,3 +60,11 @@ if __name__ == '__main__':
                 count += xmas_diag(file, i, j)
     print(count)
                 
+    #Part 2 
+    count = 0
+    for i in range(1, len(file) - 1):
+        for j in range(1, len(file[i])-1):
+            if file[i][j] == "A":
+                if ((file[i-1][j-1] == "M" and file[i+1][j+1] == "S") or (file[i-1][j-1] == "S" and file[i+1][j+1] == "M")) and ((file[i+1][j-1] == "M" and file[i-1][j+1] == "S") or (file[i+1][j-1] == "S" and file[i-1][j+1] == "M")):
+                    count += 1
+    print(count)
